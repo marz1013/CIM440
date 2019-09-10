@@ -1,0 +1,43 @@
+var pointX = 0;
+var pointY = 0;
+
+var faceColor = "purple";
+
+function setup() {
+  // put setup code here
+  createCanvas(500,500);
+  pointX = width/2
+  pointY = height/2
+  //console.log("pointX " + pointX) + " pointY " + pointY );
+
+}
+
+function draw() {
+  // put drawing code here
+background("white");
+pointX = mouseX
+pointY = mouseY
+
+//console.log("pointX " + pointX) + " pointY " + pointY );
+fill(faceColor)
+rect(pointX - 75,pointY - 75,150,150);
+ellipse(pointX, pointY,10,10);//nose
+ellipse(pointX + 20,pointY - 20,30,30);//right eye
+ellipse(pointX - 20,pointY - 20,30,30);//left eye
+arc(pointX,pointY + 10,50,50,0,PI);//mouth
+
+
+}
+
+
+function mousePressed(){
+faceColor = "red";
+}
+
+function mouseReleased(){
+faceColor = "purple";
+}
+
+function keyPressed(){
+faceColor = "blue";
+}
