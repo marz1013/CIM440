@@ -3,6 +3,7 @@ var face = 250
 var highlight = 15
 var blush = 50
 
+var faceColor = "gold"
 function setup() {
   // put setup code here
 
@@ -18,7 +19,8 @@ background("lightcoral");
 function draw() {
   // put drawing code here
 
-  fill("gold");
+  //fill("gold");
+  fill(faceColor);
   stroke("black");
   ellipse(250,250,face); //face
 
@@ -45,4 +47,13 @@ function draw() {
   arc(250,300,75,75,0,PI); //mouth
 
 
+}
+
+
+function mousePressed(){
+faceColor = "red";
+}
+
+function mouseReleased(){
+faceColor = "gold";
 }
