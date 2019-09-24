@@ -3,9 +3,9 @@
 // dinosaur "Rupenhorn Dinosaur #4" by Kristian_Laban is licensed under CC BY-NC 2.0 https://search.creativecommons.org/photos/96213ba5-e9b6-4f2f-91e4-da28b9fcad22
 
 
-var sloth, puppy, dinosaur;
+var sloth, puppy, dinosaur, cat, fox;
 
-var sButton, pButton, dButton;
+var sButton, pButton, dButton, cButton, fButton;
 
 var currentImage = 0;
 
@@ -13,6 +13,8 @@ function preload(){
   sloth = loadImage("images/sloth.jpg");
   puppy = loadImage("images/puppy.jpg");
   dinosaur = loadImage("images/dinosaur.jpg");
+  cat = loadImage("images/cat.jpg");
+  fox = loadImage("images/fox.jpg");
 }
 
 
@@ -42,13 +44,27 @@ function setup() {
 
   });
 
+  dButton = createButton("Cat");
+  dButton.mousePressed(function(){
+
+    currentImage = 3;
+
+  });
+
+  dButton = createButton("Fox");
+  dButton.mousePressed(function(){
+
+    currentImage = 4;
+
+  });
+
 }
 
 
 function draw() {
 
   background(255);
-  
+
   console.log("currentImage " + currentImage);
   // put drawing code here
 
@@ -58,6 +74,12 @@ function draw() {
     image(puppy,0,0,puppy.width/4,puppy.height/4);
   }else if(currentImage == 2){
     image(dinosaur,0,0,dinosaur.width/4,dinosaur.height/4);
+  }
+  }else if(currentImage == 3){
+    image(cat,0,0,cat.width/4,cat.height/4);
+  }
+  }else if(currentImage == 4){
+    image(fox,0,0,fox.width/4,fox.height/4);
   }
 
 
