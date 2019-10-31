@@ -5,7 +5,7 @@
 
 var imageArray = [];
 
-var sButton, pButton, dButton;
+var sButton, pButton, dButton, fButton, cButton;
 
 var currentImage = 0;
 
@@ -13,6 +13,8 @@ function preload(){
   imageArray[0] = loadImage("images/sloth.jpg");
   imageArray[1] = loadImage("images/puppy.jpg");
   imageArray[2] = loadImage("images/dinosaur.jpg");
+  imageArray[3] = loadImage("images/fox.jpg");
+  imageArray[4] = loadImage("images/cat.jpg");
 }
 
 
@@ -21,6 +23,7 @@ function preload(){
 function setup() {
   // put setup code here
   createCanvas(400,400);
+
   sButton = createButton("Sloth");
   sButton.mousePressed(function(){
     currentImage = 0;
@@ -36,6 +39,15 @@ function setup() {
     currentImage = 2;
   });
 
+  fButton = createButton("Fox");
+  dButton.mousePressed(function(){
+    currentImage = 3;
+  });
+
+  cButton = createButton("Cat");
+  dButton.mousePressed(function(){
+    currentImage = 4;
+  });
 
 }
 
