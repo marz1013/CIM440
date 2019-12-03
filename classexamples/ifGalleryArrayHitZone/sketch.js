@@ -16,6 +16,8 @@ function preload(){
   imageArray[0] = loadImage("images/sloth.jpg");
   imageArray[1] = loadImage("images/puppy.jpg");
   imageArray[2] = loadImage("images/dinosaur.jpg");
+  imageArray[3] = loadImage("images/cat.jpg");
+  imageArray[4] = loadImage("images/fox.jpg");
 }
 
 //hw cycle through the images backwards
@@ -54,6 +56,16 @@ function mousePressed(){
         currentImage = currentImage - 1;
         if(currentImage == -1){
           currentImage = 0;
+
+function mousePressed(){
+      if(mouseX > hitX[2] && mouseX < hitX[2] + hitSize && mouseY > hitY[2] && mouseY < hitY[2] + hitSize){
+          console.log("Clicked Button 2");
+          currentImage = currentImage - 1;
+          if(currentImage == -1){
+            currentImage = 0;
+
+
+
     }//check length
   }//end of hit[0] click
 
