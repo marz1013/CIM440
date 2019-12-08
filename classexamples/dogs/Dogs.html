@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started 3</title>
+    <style> body {padding: 0; margin: 0;}
+
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropbtn:hover, .dropbtn:focus {
+      background-color: #2980B9;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown a:hover {background-color: #ddd;}
+
+    .show {display: block;}
+
+    img {
+        max-width: 10%;
+        height: auto;
+    }
+
+    </style>
+
+    <script>
+        
+        var chosenSize = 'small';
+        var chosenColor = 'black';
+        var imageToShow = 'smallblack.png';
+
+    // define array with choices
+        var choices = [
+            ['small', 'black', 'smallblack.png'],
+            ['small', 'brown', 'smallbrown.png'],
+            ['small', 'yellow', 'smallyellow.png'],
+            ['small', 'white', 'smallwhite.png'],
+            ['small', 'grey', 'smallgrey.png'],
+            ['med', 'black', 'mediumblack.png'],
+            ['med', 'brown', 'mediumbrown.png'],
+            ['med', 'yellow', 'mediumyellow.png'],
+            ['med', 'white', 'mediumwhite.png'],
+            ['med', 'grey', 'mediumgrey.png'],
+            ['large', 'black', 'largeblack.png'],
+            ['large', 'brown', 'largebrown.png'],
+            ['large', 'yellow', 'largeyellow.png'],
+            ['large', 'white', 'largewhite.png'],
+            ['large', 'grey', 'largegrey.png']
+        ];
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction1() {
+      document.getElementById("myDropdown1").classList.toggle("show");
+    }
+
+    function myFunction2() {
+      document.getElementById("myDropdown2").classList.toggle("show");
+    }
+
+    function getSize(size) {
+      chosenSize = size;
+      displayImage();
+    }
+
+    function getColor(color) {
+      chosenColor = color;
+      displayImage();
+    }
+        
+    function displayImage() {
+        for (var i = 0; i < 15; i++) {
+            if ((choices[i][0] == chosenSize) && (choices[i][1] == chosenColor)) {
+                imageToShow = choices[i][2];
+                document.getElementById("dog").src = imageToShow;
+            }
+        }
+    }
+        
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
+  </head>
+
+
+<body>
+
+<h2>Customize Your Dog!</h2>
+<p>Click to see the options</p>
+
+<div class="Sizes">
+  <button onclick="myFunction1()" class="dropbtn">Sizes</button>
+  <div id="myDropdown1" class="dropdown-content">
+    <a href="javascript:getSize('small')">Small</a>
+    <a href="javascript:getSize('med')">Medium</a>
+    <a href="javascript:getSize('large')">Large</a>
+  </div>
+</div>
+
+<h2></h2>
+<p>Click to see the options</p>
+
+<div class="Colors">
+  <button onclick="myFunction2()" class="dropbtn">Colors</button>
+  <div id="myDropdown2" class="dropdown-content">
+    <a href="javascript:getColor('black')">Black</a>
+    <a href="javascript:getColor('brown')">Brown</a>
+    <a href="javascript:getColor('yellow')">Yellow</a>
+    <a href="javascript:getColor('grey')">Grey</a>
+    <a href="javascript:getColor('white')">White</a>
+  </div>
+</div>
+<img id="dog" src="smallblack.png">
+<p id="demo"></p>
+</body>

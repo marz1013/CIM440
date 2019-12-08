@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Dog</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        body {
+          padding: 0; 
+          margin: 0;
+        }
+        
+        img {
+          max-width: 10%;
+          height: auto;
+        }
+        
+        h3 {
+            color: red;
+        }
+        
+        #draggable {
+            width: auto;
+            height: auto;
+            padding: 1em;
+        }
+        
+        .dropbtn {
+          background-color: #3498DB;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+        }
+
+        .dropbtn:hover, .dropbtn:focus {
+          background-color: #2980B9;
+        }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          overflow: auto;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+        }
+      </style>
+      
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      
+      <script>
+          
+            var sizeChoice = "Small";
+            var colorChoice = "Black";
+            var picChoice = "smallblack.png";
+            
+            // This table is used to determine which picture to show based
+            // upon the user's choices
+            var choiceTable = [
+                ["Small", "Black", "smallblack.png"],
+                ["Small", "Yellow", "smallyellow.png"],
+                ["Small", "Brown", "smallbrown.png"],
+                ["Small", "Grey", "smallgrey.png"],
+                ["Small", "White", "smallwhite.png"],
+                ["Medium", "Black", "mediumblack.png"],
+                ["Medium", "Yellow", "mediumyellow.png"],
+                ["Medium", "Brown", "mediumbrown.png"],
+                ["Medium", "Grey", "mediumgrey.png"],
+                ["Medium", "White", "mediumwhite.png"],
+                ["Large", "Black", "largeblack.png"],
+                ["Large", "Yellow", "largeyellow.png"],
+                ["Large", "Brown", "largebrown.png"],
+                ["Large", "Grey", "largegrey.png"],
+                ["Large", "White", "largewhite.png"]
+            ];
+
+            // jQuery to drag the dog around
+            $( function() {
+              $("#draggable").draggable();
+              });
+          
+            /* When the user clicks on the button,
+            toggle between hiding and showing the dropdown content */
+            function myFunction1() {
+              document.getElementById("myDropdown1").classList.toggle("show");
+            }
+
+            function myFunction2() {
+              document.getElementById("myDropdown2").classList.toggle("show");
+            }            
+            
+            function getSmall() {
+                sizeChoice = "Small";
+                setImage(sizeChoice, colorChoice);
+            }
+            
+            function getMed() {
+                sizeChoice = "Medium";
+                setImage(sizeChoice, colorChoice);
+            }
+            
+            function getLarge() {
+                sizeChoice = "Large";
+                setImage(sizeChoice, colorChoice);
+            }
+            
+            
+            function getBlack() {
+                colorChoice = "Black";
+                setImage(sizeChoice, colorChoice);
+            }
+            
+            function getYellow() {
+                colorChoice = "Yellow";
+                setImage(sizeChoice, colorChoice);
+            }
+            
+            function getBrown() {
+                colorChoice = "Brown";
+                setImage(sizeChoice, colorChoice);
+            }
+            
+            function getGrey() {
+                colorChoice = "Grey";
+                setImage(sizeChoice, colorChoice);
+            }
+            
+            function getWhite() {
+                colorChoice = "White";
+                setImage(sizeChoice, colorChoice);
+            }
+            
+            function setImage(sizeChoice, colorChoice) {
+                for (var i = 0; i < 15; i++) {
+                    if ((choiceTable[i][0] == sizeChoice) && 
+                        (choiceTable[i][1] == colorChoice)) {
+                            picChoice = choiceTable[i][2];
+                            break;
+                    }
+                }
+                
+                console.log(sizeChoice, colorChoice, picChoice);
+                
+                // Display the picture
+                document.getElementById("dog").src = picChoice;
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
+            }
+        </script>
+    </head>
+    
+    
+    <body>
+
+        <h2>Customize Your Dog!</h2>
+        <p>Click to see the options</p>
+
+        <div class="Sizes">
+          <button onclick="myFunction1()" class="dropbtn">Sizes</button>
+          <div id="myDropdown1" class="dropdown-content">
+            <a href="javascript:getSmall()">Small</a>
+            <a href="javascript:getMed()">Medium</a>
+            <a href="javascript:getLarge()">Large</a>
+          </div>
+        </div>
+
+        <p>Click to see the options</p>
+
+        <div class="Colors">
+          <button onclick="myFunction2()" class="dropbtn">Colors</button>
+          <div id="myDropdown2" class="dropdown-content">
+            <a href="javascript:getBlack()">Black</a>
+            <a href="javascript:getYellow()">Yellow</a>
+            <a href="javascript:getBrown()">Brown</a>
+            <a href="javascript:getGrey()">Grey</a>
+            <a href="javascript:getWhite()">White</a>
+          </div>
+        </div>
+        <br>
+        <div id="draggable" class="ui-widget-content">
+            <img id="dog" src="smallblack.png">
+            <h3>Take me for a walk. Drag me around the screen!</h3>
+        </div>
+        
+        
+        
+  </body>
+</html>

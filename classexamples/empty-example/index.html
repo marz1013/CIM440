@@ -4,153 +4,222 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Getting Started 3</title>
- <style> body {padding: 0; margin: 0;}
+ <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
 
- .dropbtn {
-   background-color: #3498DB;
-   color: white;
-   padding: 16px;
-   font-size: 16px;
-   border: none;
-   cursor: pointer;
- }
+    img {
+      max-width: 10%;
+      height: auto;
+    }
 
- .dropbtn:hover, .dropbtn:focus {
-   background-color: #2980B9;
- }
+    h3 {
+        color: red;
+    }
 
- .dropdown {
-   position: relative;
-   display: inline-block;
- }
+    #draggable {
+        width: auto;
+        height: auto;
+        padding: 1em;
+    }
 
- .dropdown-content {
-   display: none;
-   position: absolute;
-   background-color: #f1f1f1;
-   min-width: 160px;
-   overflow: auto;
-   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-   z-index: 1;
- }
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
 
- .dropdown-content a {
-   color: black;
-   padding: 12px 16px;
-   text-decoration: none;
-   display: block;
- }
+    .dropbtn:hover, .dropbtn:focus {
+      background-color: #2980B9;
+    }
 
- .dropdown a:hover {background-color: #ddd;}
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
- .show {display: block;}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
 
- img {
-     max-width: 10%;
-     height: auto;
- }
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
 
- </style>
+    .dropdown a:hover {
+        background-color: #ddd;
+    }
 
- <script>
+    .show {
+        display: block;
+    }
+  </style>
 
-     var chosenSize = 'small';
-     var chosenColor = 'black';
-     var imageToShow = 'smallblack.png';
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
- // define array with choices
-     var choices = [
-         ['small', 'black', 'smallblack.png'],
-         ['small', 'brown', 'smallbrown.png'],
-         ['small', 'yellow', 'smallyellow.png'],
-         ['small', 'white', 'smallwhite.png'],
-         ['small', 'grey', 'smallgrey.png'],
-         ['med', 'black', 'mediumblack.png'],
-         ['med', 'brown', 'mediumbrown.png'],
-         ['med', 'yellow', 'mediumyellow.png'],
-         ['med', 'white', 'mediumwhite.png'],
-         ['med', 'grey', 'mediumgrey.png'],
-         ['large', 'black', 'largeblack.png'],
-         ['large', 'brown', 'largebrown.png'],
-         ['large', 'yellow', 'largeyellow.png'],
-         ['large', 'white', 'largewhite.png'],
-         ['large', 'grey', 'largegrey.png']
-     ];
- /* When the user clicks on the button,
- toggle between hiding and showing the dropdown content */
- function myFunction1() {
-   document.getElementById("myDropdown1").classList.toggle("show");
- }
+  <script>
 
- function myFunction2() {
-   document.getElementById("myDropdown2").classList.toggle("show");
- }
+        var sizeChoice = "Small";
+        var colorChoice = "Black";
+        var picChoice = "smallblack.png";
 
- function getSize(size) {
-   chosenSize = size;
-   displayImage();
- }
+        // This table is used to determine which picture to show based
+        // upon the user's choices
+        var choiceTable = [
+            ["Small", "Black", "smallblack.png"],
+            ["Small", "Yellow", "smallyellow.png"],
+            ["Small", "Brown", "smallbrown.png"],
+            ["Small", "Grey", "smallgrey.png"],
+            ["Small", "White", "smallwhite.png"],
+            ["Medium", "Black", "mediumblack.png"],
+            ["Medium", "Yellow", "mediumyellow.png"],
+            ["Medium", "Brown", "mediumbrown.png"],
+            ["Medium", "Grey", "mediumgrey.png"],
+            ["Medium", "White", "mediumwhite.png"],
+            ["Large", "Black", "largeblack.png"],
+            ["Large", "Yellow", "largeyellow.png"],
+            ["Large", "Brown", "largebrown.png"],
+            ["Large", "Grey", "largegrey.png"],
+            ["Large", "White", "largewhite.png"]
+        ];
 
- function getColor(color) {
-   chosenColor = color;
-   displayImage();
- }
+        // jQuery to drag the dog around
+        $( function() {
+          $("#draggable").draggable();
+          });
 
- function displayImage() {
-     for (var i = 0; i < 15; i++) {
-         if ((choices[i][0] == chosenSize) && (choices[i][1] == chosenColor)) {
-             imageToShow = choices[i][2];
-             document.getElementById("dog").src = imageToShow;
-         }
-     }
- }
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction1() {
+          document.getElementById("myDropdown1").classList.toggle("show");
+        }
 
- // Close the dropdown if the user clicks outside of it
- window.onclick = function(event) {
-   if (!event.target.matches('.dropbtn')) {
-     var dropdowns = document.getElementsByClassName("dropdown-content");
-     var i;
-     for (i = 0; i < dropdowns.length; i++) {
-       var openDropdown = dropdowns[i];
-       if (openDropdown.classList.contains('show')) {
-         openDropdown.classList.remove('show');
-       }
-     }
-   }
- }
- </script>
+        function myFunction2() {
+          document.getElementById("myDropdown2").classList.toggle("show");
+        }
+
+        function getSmall() {
+            sizeChoice = "Small";
+            setImage(sizeChoice, colorChoice);
+        }
+
+        function getMed() {
+            sizeChoice = "Medium";
+            setImage(sizeChoice, colorChoice);
+        }
+
+        function getLarge() {
+            sizeChoice = "Large";
+            setImage(sizeChoice, colorChoice);
+        }
+
+
+        function getBlack() {
+            colorChoice = "Black";
+            setImage(sizeChoice, colorChoice);
+        }
+
+        function getYellow() {
+            colorChoice = "Yellow";
+            setImage(sizeChoice, colorChoice);
+        }
+
+        function getBrown() {
+            colorChoice = "Brown";
+            setImage(sizeChoice, colorChoice);
+        }
+
+        function getGrey() {
+            colorChoice = "Grey";
+            setImage(sizeChoice, colorChoice);
+        }
+
+        function getWhite() {
+            colorChoice = "White";
+            setImage(sizeChoice, colorChoice);
+        }
+
+        function setImage(sizeChoice, colorChoice) {
+            for (var i = 0; i < 15; i++) {
+                if ((choiceTable[i][0] == sizeChoice) &&
+                    (choiceTable[i][1] == colorChoice)) {
+                        picChoice = choiceTable[i][2];
+                        break;
+                }
+            }
+
+            console.log(sizeChoice, colorChoice, picChoice);
+
+            // Display the picture
+            document.getElementById("dog").src = picChoice;
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
 </head>
 
 
 <body>
 
-<h2>Customize Your Dog!</h2>
-<p>Click to see the options</p>
+    <h2>Customize Your Dog!</h2>
+    <p>Click to see the options</p>
 
-<div class="Sizes">
-<button onclick="myFunction1()" class="dropbtn">Sizes</button>
-<div id="myDropdown1" class="dropdown-content">
- <a href="javascript:getSize('small')">Small</a>
- <a href="javascript:getSize('med')">Medium</a>
- <a href="javascript:getSize('large')">Large</a>
-</div>
-</div>
+    <div class="Sizes">
+      <button onclick="myFunction1()" class="dropbtn">Sizes</button>
+      <div id="myDropdown1" class="dropdown-content">
+        <a href="javascript:getSmall()">Small</a>
+        <a href="javascript:getMed()">Medium</a>
+        <a href="javascript:getLarge()">Large</a>
+      </div>
+    </div>
 
-<h2></h2>
-<p>Click to see the options</p>
+    <p>Click to see the options</p>
 
-<div class="Colors">
-<button onclick="myFunction2()" class="dropbtn">Colors</button>
-<div id="myDropdown2" class="dropdown-content">
- <a href="javascript:getColor('black')">Black</a>
- <a href="javascript:getColor('brown')">Brown</a>
- <a href="javascript:getColor('yellow')">Yellow</a>
- <a href="javascript:getColor('grey')">Grey</a>
- <a href="javascript:getColor('white')">White</a>
-</div>
-</div>
-<img id="dog" src="smallblack.png">
-<p id="demo"></p>
-<body>
-  
+    <div class="Colors">
+      <button onclick="myFunction2()" class="dropbtn">Colors</button>
+      <div id="myDropdown2" class="dropdown-content">
+        <a href="javascript:getBlack()">Black</a>
+        <a href="javascript:getYellow()">Yellow</a>
+        <a href="javascript:getBrown()">Brown</a>
+        <a href="javascript:getGrey()">Grey</a>
+        <a href="javascript:getWhite()">White</a>
+      </div>
+    </div>
+    <br>
+    <div id="draggable" class="ui-widget-content">
+        <img id="dog" src="smallblack.png">
+        <h3>Take me for a walk. Drag me around the screen!</h3>
+    </div>
+
+
+
+</body>
+
 </html>
