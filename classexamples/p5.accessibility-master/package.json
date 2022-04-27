@@ -27,7 +27,7 @@
     "devDependencies": {
         "eslint": "^5.0.1",
         "eslint-config-p5js": "^1.0.1",
-        "grunt": "^1.0.4",
+        "grunt": "^1.5.2",
         "grunt-contrib-coffee": "^2.0.0",
         "grunt-contrib-concat": "^0.5.0",
         "grunt-contrib-cssmin": "~0.10.0",
